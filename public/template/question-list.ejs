@@ -1,0 +1,30 @@
+
+<% for(let q of questions){ %>
+    <div class="panel panel-default question-item">
+        <div class="panel-heading question-quizzer">
+            <img class="quizzer-avatar" src="/avatar/<%= q.quizzer.avatar %>?<%= rnd %>" alt="">
+            <span class="quizzer-account"><%= q.quizzer.account %></span>
+            <span class="question-time"><%= q.time %></span>
+        </div>
+        <div class="panel-heading question-caption"><%= q.caption %></div>
+        <div class="panel-body qusetion-content"><pre><%= q.content %></pre></div>
+        <ul class="list-group answers-list">
+            <% for(let a of q.answers){ %>
+            <li class="list-group-item answer-item">
+                <div class="answer-item-right" style="text-align:right">
+                    <span class="answer-time"><%= a.time %></span>
+                    <span class="replier-account"><%= a.replier.account %></span>
+                    <img class="replier-avatar" src="/avatar/<%= a.replier.avatar %>?<%= rnd %>">
+                </div>
+                <div class="text-primary" >
+                    <pre class="text-primary"><%= a.content %></pre>
+                </div>
+            </li>
+            <% } %>
+        </ul>
+        <div class="panel-body answer">
+            <textarea name="content" class="form-control answer-content" style="display:none"></textarea>
+            <button class="pull-right btn btn-info answer-item-right" onclick="answerClick(event)" qid="<%= q._id %>" >我来回答</button>
+        </div>
+    </div>
+<% } %>

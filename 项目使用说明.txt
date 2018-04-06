@@ -1,0 +1,6 @@
+下载项目后
+1. 下载项目依赖项
+2. 在 bin/DAO/connect.js 配置数据库
+3. 在 config.js 中配置邮箱服务的发件邮箱账号和授权码
+4. 在 bin/utils/mail-send.js 中修改服务端url路径和用以发送邮件的邮箱
+5. 如果不使用163邮箱 在 bin/utils/mail-sender.js 中更改service属性

@@ -1,0 +1,31 @@
+<% if(user){%>
+    <li>
+        <a href="#" data-toggle="modal" data-target="#question-modal">提问</a>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><%= user.account %>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="#" data-toggle="modal" data-target="#avatar-modal">上传头像</a>
+            </li>
+            <li>
+                <a href="#" id="logout-btn">退出登录</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <img id="account-avatar" src="/avatar/<%= user.avatar %>?<%= rnd %>">
+    </li>
+<% }else { %>
+    <li>
+        <a href="#" data-toggle="modal" data-target="#login-modal" id="question-unlogin-click">提问</a>
+    </li>
+    <li>
+        <a href="#" data-toggle="modal" data-target="#login-modal" id="login-modal-show">登录</a>
+    </li>
+    <li>
+        <a href="#" data-toggle="modal" data-target="#regist-modal" id="regist-modal-show">注册</a>
+    </li>
+<% } %>

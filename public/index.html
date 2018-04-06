@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>在线问答</title>
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-fileinput.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+
+<body>
+    <!-- 注册模态框 -->
+    <div class="modal fade" id="regist-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">注册</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="regist-modal-form" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="regist-modal-account" class="col-sm-2 control-label">账号</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="account" id="regist-modal-account" placeholder="请输入2到10位">
+                                </div>
+                                <span class="red-star">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regist-modal-psw" class="col-sm-2 control-label">密码</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" name="psw" id="regist-modal-psw" placeholder="密码最少3位">
+                                </div>
+                                <span class="red-star">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regist-modal-confirm" class="col-sm-2 control-label">确认密码</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="regist-modal-confirm" placeholder="再次输入密码">
+                                </div>
+                                <span class="red-star">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regist-modal-email" class="col-sm-2 control-label">邮箱</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" name="email" id="regist-modal-email" placeholder="需要使用邮箱进行账号激活">
+                                </div>
+                                <span class="red-star">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regist-modal-captcha" class="col-sm-2 control-label">验证码</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="captcha" id="regist-modal-captcha">
+                                </div>
+                                <span class="red-star">*</span>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-9">
+                                <img src="/captcha" alt="加载失败" id="regist-captcha-img">
+                                <a href="javascript:void(0)" id="regist-captcha-change">看不清,换一张</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="regist-modal-btn" type="button" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 登录模态框 -->
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">登录</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="login-modal-form" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="login-modal-account" class="col-sm-2 control-label">账号</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="account" id="login-modal-account">
+                                </div>
+                                <span class="red-star">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-modal-psw" class="col-sm-2 control-label">密码</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" name="psw" id="login-modal-psw">
+                                </div>
+                                <span class="red-star">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-modal-captcha" class="col-sm-2 control-label">验证码</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="captcha" id="login-modal-captcha">
+                                </div>
+                                <span class="red-star">*</span>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-9">
+                                <img src="/captcha" alt="加载失败" id="login-captcha-img">
+                                <a href="javascript:void(0)" id="login-captcha-change">看不清,换一张</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="login-modal-btn" type="button" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 发布问题模态框 -->
+    <div class="modal fade" id="question-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">发布新问题</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="question-modal-form" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="question-modal-account" class="col-sm-2 control-label">问题标题</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="caption" id="question-modal-caption">
+                                </div>
+                                <span class="red-star">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="question-modal-psw" class="col-sm-2 control-label">问题内容</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <textarea type="text" class="form-control" name="content" id="question-modal-content">
+                                    </textarea>
+                                </div>
+                                <span class="red-star">*</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="question-modal-btn" type="button" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 上传头像模态框 -->
+    <div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">上传头像</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="avatar-modal-form" class="form-horizontal">
+                        <div class="form-group" id="uploadForm" enctype='multipart/form-data'>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-9">
+                                <div class="h4">图片预览</div>
+                                <div class="fileinput fileinput-new" data-provides="fileinput" id="exampleInputUpload">
+                                    <div class="fileinput-new thumbnail" style="width: 200px;height: auto;max-height:150px;">
+                                        <img id='picImg' style="width: 100%;height: auto;max-height: 140px;" src="images/noimage.png" alt="" />
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                                    <div>
+                                        <span class="btn btn-primary btn-file">
+                                            <span class="fileinput-new">选择文件</span>
+                                            <span class="fileinput-exists">换一张</span>
+                                            <input type="file" name="avatar" id="picID" accept="image/gif,image/jpeg,image/x-png" />
+                                        </span>
+                                        <a href="javascript:void(0);" class="btn btn-warning fileinput-exists" data-dismiss="fileinput">移除</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="avatar-modal-btn" type="button" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航 -->
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">在线问答系统</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" id="nav-list">
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 问题列表 -->
+    <div id="question-list" class="container">
+        
+    </div>
+
+    <script src="libs/jquery.js"></script>
+    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="libs/bootstrap/js/bootstrap-fileinput.js"></script>
+    <script src="libs/layer/layer.js"></script>
+    <script src="libs/ejs.js"></script>
+    <script src="/javascripts/index.js"></script>
+
+</body>
+
+</html>

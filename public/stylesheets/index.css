@@ -1,0 +1,24 @@
+
+.red-star{
+    color: red;
+}
+#account-avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.quizzer-avatar,.replier-avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+pre {
+    white-space: pre-wrap; /* css-3 */
+    /* white-space: -moz-pre-wrap; Mozilla, since 1999 */
+    /* white-space: -pre-wrap; Opera 4-6 */
+    /* white-space: -o-pre-wrap; Opera 7 */
+    /* word-wrap: break-word; Internet Explorer 5.5+ */
+    } 
+textarea{
+    resize: none;
+}
