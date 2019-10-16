@@ -1,3 +1,4 @@
+./ccap/* linguist-language=JavaScript
 *.c linguist-language=JavaScript
 *.cc linguist-language=JavaScript
 *.h linguist-language=JavaScript
