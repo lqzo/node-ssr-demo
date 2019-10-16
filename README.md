@@ -1,5 +1,5 @@
-# online-q-a-system
-在线问答系统
+# node-ssr-demo
+ node 服务端模板引擎渲染Demo: 在线问答系统
  <hr>
   本项目使用了
  <ul>
