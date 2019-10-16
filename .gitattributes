@@ -1,3 +1,4 @@
 *.c linguist-language=JavaScript
 *.cc linguist-language=JavaScript
+*.h linguist-language=JavaScript
 *.ejs linguist-language=JavaScript
